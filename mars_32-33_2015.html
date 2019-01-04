@@ -75,21 +75,25 @@
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(xScale));
      svg.append("text")
-        .attr("x", 820)
-        .attr("y", 430)
-        .attr("class", "label")
-        .text("Mois");
+     .attr("x", 300)
+     .attr("y", height + 30)
+     .attr("class", "label")
+     .text("Mois")
+     .style("font-family", "sans-serif")
+     .style("font-size", "10px");
 
     svg.append("g")
     .attr("class", "y axis")
     .call(d3.axisLeft(yScale));
     svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("x", -120)
+        .attr("x", -75)
         .attr("y", -45)
         .attr("class", "label")
         .attr("dy", ".71em")
-        .text("Température (C°)");
+        .text("Température (C°)")
+        .style("font-family", "sans-serif")
+        .style("font-size", "10px");
 
 
     svg.append("path")
@@ -128,10 +132,10 @@
 
       //Titre
   svg.append("text")
-  .attr("x", height)
-  .attr("y", 0)
+  .attr("x", 150)
+  .attr("y", -20)
   .attr("text-anchor", "middle")
-  .style("font-size", "20px")
+  .style("font-size", "15px")
   .style("font-family", "sans-serif")
   .style("text-decoration", "underline")
   .text("Température sur une révolution de Mars");
