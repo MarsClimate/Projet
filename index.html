@@ -6,39 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 20px;
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;}
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
@@ -70,7 +38,7 @@
       <p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
     </div>
-    <div class="col-sm-8 text-left">
+    <div class="col-sm-8 text-justify">
       <h1>DataViz Project : Mars climate <br>
         <small>Groupe 10 - Juliette Geoffray, Ella Beaumann, Olivier Imbaud</small>
       </h1>
@@ -93,6 +61,21 @@
         abstrait sans point de comparaison.
       </p>
       <hr>
+
+      <h3>Températures au cours d'une révolution</h3>
+        <iframe src="./terre_2015.html"
+                width="50%"
+                height="400"
+                align="left">
+  			</iframe>
+
+        <iframe src="./mars_32-33_2015.html"
+                width="50%"
+                height="400"
+                align="right">
+  			</iframe>
+    <p>Ici, on a représenté par des line charts les températures de la Terre
+    et de Mars pendant une révolution, c'est-à-dire une année.</p>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
@@ -102,11 +85,14 @@
         <p>ADS</p>
       </div>
     </div>
+
+
+
   </div>
 </div>
 
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <p>Université Claude Bernard Lyon 1 - 2018/2019</p>
 </footer>
 
 </body>

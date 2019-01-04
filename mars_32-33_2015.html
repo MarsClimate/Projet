@@ -4,25 +4,21 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <style type="text/css">
 /* 13. Basic Styling with CSS */
-
 /* Style the lines by removing the fill and applying a stroke */
 .line {
     fill: none;
     stroke: #ffab00;
     stroke-width: 3;
 }
-
 .overlay {
   fill: none;
   pointer-events: all;
 }
-
 /* Style the dots by assigning a fill and stroke */
 .dot {
     fill: #ffab00;
     stroke: #fff;
 }
-
   .focus circle {
   fill: none;
   stroke: steelblue;
@@ -33,66 +29,50 @@
 
 <body>
   <script>
-    
 	var margin = {top: 50, right: 50, bottom: 50, left: 50}
-  , width = window.innerWidth - margin.left - margin.right 
+  , width = window.innerWidth - margin.left - margin.right
   , height = window.innerHeight - margin.top - margin.bottom;
-    
-   n=12
-    
+   n=7
     var xScale = d3.scaleLinear()
     .domain([1, n]) // input
     .range([0, width]); // output
-    
     var yScale = d3.scaleLinear()
-    .domain([13, 20]) // input 
-    .range([height, 0]); // output 
-    
-   
-   
-   d3.json("terre_dataset.json", function(error, data) {
+    .domain([170, 200]) // input
+    .range([height, 0]); // output
+   d3.json("mars_dataset.json", function(error, data) {
 	  	if (error) throw error;
-
       // Pre-processing
       data.forEach(function(d) {
 				d.value = +d.value;
-        d.month = +d.month;
+        d.id = +d.id;
       });
-     
     var line = d3.line()
-    .x(function(d, i) { return xScale(d.month); }) 
-    .y(function(d) { return yScale(d.value); }) 
-    .curve(d3.curveMonotoneX) 
-    
+    .x(function(d, i) { return xScale(d.id); })
+    .y(function(d) { return yScale(d.value); })
+    .curve(d3.curveMonotoneX)
     var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
     svg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale)); 
-     
+    .call(d3.axisBottom(xScale));
     svg.append("g")
     .attr("class", "y axis")
     .call(d3.axisLeft(yScale));
-     
     svg.append("path")
-    .datum(data) // 10. Binds data to the line 
-    .attr("class", "line") // Assign a class for styling 
-    .attr("d", line); // 11. Calls the line generator 
-     
-
+    .datum(data) // 10. Binds data to the line
+    .attr("class", "line") // Assign a class for styling
+    .attr("d", line); // 11. Calls the line generator
     svg.selectAll(".dot")
     .data(data)
   .enter().append("circle") // Uses the enter().append() method
     .attr("class", "dot") // Assign a class for styling
-    .attr("cx", function(d, i) { return xScale(d.month) })
+    .attr("cx", function(d, i) { return xScale(d.id) })
     .attr("cy", function(d) { return yScale(d.value) })
     .attr("r", 5)
    });
-    
   </script>
 </body>
