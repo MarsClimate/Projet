@@ -45,9 +45,9 @@
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
   <script>
-    
+
 	var margin = {top: 70, right: 150, bottom: 50, left: 50}
-  , width = window.innerWidth - margin.left - margin.right 
+  , width = window.innerWidth - margin.left - margin.right
   , height = window.innerHeight - margin.top - margin.bottom;
 
    n=12
@@ -71,24 +71,28 @@
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(xScale));
 
-    svg.append("text") 
+    svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("x", -120)
-        .attr("y", -40)
+        .attr("x", -75)
+        .attr("y", -45)
         .attr("class", "label")
         .attr("dy", ".71em")
-        .text("Température (C°)");
-     
+        .text("Température (C°)")
+        .style("font-family", "sans-serif")
+        .style("font-size", "10px");
+
     svg.append("g")
     .attr("class", "y axis")
     .call(d3.axisLeft(yScale))
     svg.append("text")
-        .attr("x", 720)
-        .attr("y", 415)
+        .attr("x", 605)
+        .attr("y", height + 30)
         .attr("class", "label")
-        .text("Mois");
+        .text("Mois")
+        .style("font-family", "sans-serif")
+        .style("font-size", "10px");
 
-    
+
 // ------------------------------------------------------------------------------
 
    d3.json("terre_dataset.json", function(error, data) {
@@ -118,12 +122,12 @@
     .attr("cy", function(d) { return yScale(d.value) })
 
     .attr("r", 6)
-        .on("mouseover", function(d){ 
+        .on("mouseover", function(d){
       		d3.select(this).transition().duration(200)
             .attr("r", function() { return 10; });
-      
+
       		var g = svg.append("g")
-      
+
       		svg.selectAll("#tooltip").data([d]).enter()
           			 .append("text")
                  .attr("id", "tooltip")
@@ -131,12 +135,12 @@
                  .attr("y", function(d) {return yScale(d.value - 10)})
                  .attr("x", function(d) {return xScale(d.month); })
                  .style("font-size", 15)
-                 //.style("font-family", "monospace");
+                 .style("font-family", "sans-serif");
     })
-    .on("mouseout", function(d){ 
+    .on("mouseout", function(d){
       		d3.select(this).transition().duration(200)
             .attr("r", function(d, i) { return 6; });
-      
+
       		 svg.selectAll("#tooltip").remove();
     });
     });
@@ -166,17 +170,17 @@
 
     svg.selectAll(".dot2")
     .data(data2)
-    .enter().append("circle") 
-    .attr("class", "dot2") 
+    .enter().append("circle")
+    .attr("class", "dot2")
     .attr("cx", function(d) { return xScale(d.id) })
     .attr("cy", function(d) { return yScale(d.valueC) })
     .attr("r", 6)
-    .on("mouseover", function(d){ 
+    .on("mouseover", function(d){
       		d3.select(this).transition().duration(200)
             .attr("r", function() { return 10; });
-      
+
       		var g = svg.append("g")
-      
+
       		svg.selectAll("#tooltip").data([d]).enter()
           			 .append("text")
                  .attr("id", "tooltip")
@@ -186,22 +190,22 @@
                  .style("font-size", 15)
                  //.style("font-family", "monospace");
     })
-    .on("mouseout", function(d){ 
+    .on("mouseout", function(d){
       		d3.select(this).transition().duration(200)
             .attr("r", function(d, i) { return 6; });
-      
+
       		 svg.selectAll("#tooltip").remove();
     });
-    
+
    svg.append("text")
-    .attr("x", height)             
-    .attr("y", 0)
-    .attr("text-anchor", "middle")  
-    .style("font-size", "20px") 
-    //.style("font-family", "monospace")
-    .style("text-decoration", "underline")  
+    .attr("x", 350)
+    .attr("y", -30)
+    .attr("text-anchor", "middle")
+    .style("font-size", "20px")
+    .style("font-family", "sans-serif")
+    .style("text-decoration", "underline")
     .text("Température sur une révolution de Mars et de la Terre");
-     
+
     // Legende :
     });
 
