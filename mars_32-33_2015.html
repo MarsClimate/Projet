@@ -27,6 +27,22 @@
   fill: none;
   stroke: steelblue;
 }
+
+  .hidden {
+        display: none;
+}
+  div.tooltip {
+      color: #ffffff;
+      background-color: rgba(65, 65, 65, 0.5);
+      padding: .5em;
+      border-radius: 2px;
+      opacity: 0.9;
+      position: absolute;
+      font-size: 13px;
+      font-family: sans-serif;
+      font-weight: 50;
+}
+
     body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
   </style>
 </head>
@@ -40,6 +56,9 @@
 
    n=12
 
+   var tooltip = d3.select('body').append('div')
+            .attr('class', 'hidden tooltip');
+
     var xScale = d3.scaleLinear()
     .domain([1, n])
     .range([0, width]);
@@ -47,8 +66,6 @@
     var yScale = d3.scaleLinear()
     .domain([-100, -80])
     .range([height, 0]);
-
-
 
    d3.json("mars_dataset.json", function(error, data) {
 	  	if (error) throw error;
@@ -95,7 +112,6 @@
         .style("font-family", "sans-serif")
         .style("font-size", "10px");
 
-
     svg.append("path")
     .datum(data)
     .attr("class", "line")
@@ -109,25 +125,28 @@
     .attr("cy", function(d) { return yScale(d.valueC) })
     .attr("r", 6)
     .on("mouseover", function(d){
+
+      var mouse = d3.mouse(svg.node()).map(function(d) {
+              return parseInt(d);
+          });
+
       		d3.select(this).transition().duration(200)
             .attr("r", function() { return 10; });
 
       		var g = svg.append("g")
 
-      		svg.selectAll("#tooltip").data([d]).enter()
-          			 .append("text")
-                 .attr("id", "tooltip")
-                 .text(function(d) { return d.valueC })//return d.id; })
-                 .attr("y", function(d) {return yScale(d.valueC + 1)})
-                 .attr("x", function(d) {return xScale(d.id); })
-                 .style("font-size", 15)
-                 //.style("font-family", "monospace");
+          tooltip.classed('hidden', false)
+                  .attr('style', 'left:' + (mouse[0] - 5) +
+                        'px; top:' +
+                        (mouse[1] - 5) + 'px')
+                  .html(d.valueC);
+
     })
     .on("mouseout", function(d){
       		d3.select(this).transition().duration(200)
             .attr("r", function(d, i) { return 6; });
 
-      		 svg.selectAll("#tooltip").remove();
+      		 tooltip.classed('hidden', true);
     });
 
       //Titre
