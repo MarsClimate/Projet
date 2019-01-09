@@ -44,14 +44,15 @@
         <small>Groupe 10 - Juliette Geoffray, Ella Beaumann, Olivier Imbaud</small>
       </h1>
 
-      </br></br></br><hr></br>
+    </br></br>
       <!-- Visalisation 1 -->
 
-      <h3 id="Viz1">Températures au cours de l'année 2015</h3>
+      <h2 id="Viz1">Températures au cours d'une révolution</h2>
       <p> Dans un premier temps nous avons représenté nos données sous forme de simple line chart.
-        Nous utilisons les données de température globale sur Terre durant l'année 2015 et le température
-        globale de Mars correspont à cette année sur Mars, cette transphormation a été permis grace à la base
-        de données ou nous avons trouvé nos datasets.
+        Nous utilisons les données de température globale sur Terre durant l'année 2015 et la température
+        globale de Mars durant l'année 32. Ce sont deux année chevauchante dans le temps. Il existe plusieurs
+        calendrier pour définir le temps sur Mars, on a utilisé un calendrier qui compte 12 mois de 45 jours. Cela nous as
+        permis de faire facilement la comparaison entre les deux planètes.
       <p>
 
         <iframe src="./terre_2015.html"
@@ -65,11 +66,13 @@
                 height="400"
                 align="right">
   			</iframe>
-
-    </br></br></br><hr></br>
     <!-- Visalisation 2 -->
+    <p class="truc">text</p>
 
-    <h3 id="Viz2">Comparaison des évolutions de températures sur l'année 2015</h3>
+    </br></br><hr></br>
+
+
+    <h2 id="Viz2">Comparaison des évolutions de températures sur une révolution</h2>
     <p> Voici ensuite un graphique permettant de comparé les températures de Mars et de la Terre sur un même graphique.
     <p>
 
@@ -82,19 +85,17 @@
     </br></br></br><hr></br>
     <!-- Visalisation 3 -->
 
-    <h3 id="Viz3">Représentation circulaire</h3>
+    <h2 id="Viz3">Représentation circulaire</h2>
     <p> Nous avons ensuite voulu partir sur une visualisation plus complexe. Nous avons voulu représenter
       la différence de variation de température entre les deux planètes. En nous inspirant de la forme des planètes
       nous vous proposons la vizalisation suivante : elle représente les écarts en température de la moyenne sur toute l'année
-      pour chacune des planètes.
+      pour chacune des planètes. Le point le plus haut représente le premier mois sur chaque planètes.
 
     </br></br>
       Nous aurions pu représenter cette vizualisation dans le temps pour voir l'évolution des température
       sur les deux planètes mais les température de Mars sont très stable au fil des ans. Donc une tel
       représentation n'aurais pas été pertinante : cela reviendrais à une Visalisation des variations de température
       sur la Terre seulement.
-
-
     </p>
 
 
@@ -106,10 +107,13 @@
 
     </br></br></br><hr></br>
 
-    <h3 id="Viz3">Représentation circulaire en mouvement</h3>
+    <h2 id="Viz3">Représentation circulaire en mouvement</h2>
 
     <p> Enfin nous avons voulu rendre cette visualisation plus dynamique en créant un mouvement perpétuel représantant le temps
-      qui passe. Nous avons supprimer les axes. Le points la plus haut représente toujours le premier mois de l'année 
+      qui passe. Nous avons aussi supprimer les axes pour créer une représentation extremement simple. Le points le plus haut
+      représente toujours le premier mois de l'année. Quand la courbe augmente ou diminue en ligne droite (perpendiculairement au cercle)
+      on passe au mois suivant. Le rayon du crecle représente les orbites des planètes, ainsi le cercle de la Terre est plus petit car elle plus proche
+      du soleil et inversement.
     </p>
 
     <iframe src="./visuCircle.html"

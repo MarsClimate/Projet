@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<svg width="960" height="500"></svg>
+<svg width="1000" height="600"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
@@ -11,7 +11,7 @@ var svg = d3.select("svg"),
 var path = svg.append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
     .attr("fill", "none")
-    .attr("stroke-width", 10)
+    .attr("stroke-width", 3)
     .attr("stroke-linejoin", "round")
     .selectAll("path")
     .data([{color:"#ff7700", val:[-6.62326461874,
@@ -25,7 +25,7 @@ var path = svg.append("g")
                                  4.23900747102,
                                  7.15811978986,
                                  7.12570312319,
-                                 3.20484598034], r:200},
+                                 3.20484598034], r:240},
           {color:"#00d0ff", val:[-1.754516667,
                                  -1.489716667,
                                  -0.872616667,
@@ -37,7 +37,7 @@ var path = svg.append("g")
                                  0.999583333,
                                  0.117983333,
                                  -0.902116667,
-                                 -1.557716667], r:120}])
+                                 -1.557716667], r:160}])
     .enter().append("path")
     .attr("stroke", function(d) { return d.color; })
     .style("mix-blend-mode", "multiply")
