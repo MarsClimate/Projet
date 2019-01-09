@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<svg width="960" height="500"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+  	angles = d3.range(0, 2 * Math.PI, Math.PI / 200);
+
+var path = svg.append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+    .attr("fill", "none")
+    .attr("stroke-width", 10)
+    .attr("stroke-linejoin", "round")
+    .selectAll("path")
+    .data([{color:"#ff7700", val:[-6.62326461874,
+                                 -7.73537379988,
+                                 -4.07020732457,
+                                 -0.499171876806,
+                                 -0.212296876805,
+                                 -0.759704284213,
+                                 -1.92429687681,
+                                 0.0966392934072,
+                                 4.23900747102,
+                                 7.15811978986,
+                                 7.12570312319,
+                                 3.20484598034], r:200},
+          {color:"#00d0ff", val:[-1.754516667,
+                                 -1.489716667,
+                                 -0.872616667,
+                                 0.003283333,
+                                 0.783783333,
+                                 1.385083333,
+                                 1.690083333,
+                                 1.596883333,
+                                 0.999583333,
+                                 0.117983333,
+                                 -0.902116667,
+                                 -1.557716667], r:120}])
+    .enter().append("path")
+    .attr("stroke", function(d) { return d.color; })
+    .style("mix-blend-mode", "multiply")
+    .datum(function(donnees, i) {
+      return d3.radialLine()
+          .curve(d3.curveLinearClosed)
+          .angle(function(a) { return a; })
+          .radius(function(a) {
+            var t = d3.now() / 1000;
+        		var ampl = Math.floor((a*6)/Math.PI)
+            console.log(ampl)
+        return donnees.r + donnees.val[ampl]*10 * Math.pow((1 + Math.cos(a - t)) / 2, 50);
+          });
+    });
+
+d3.timer(function() {
+  path.attr("d", function(d) {
+    return d(angles);
+  })});
+
+
+
+</script>
