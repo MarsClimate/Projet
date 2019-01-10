@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MarsClimate</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">DataViz Project</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home</a></li>
+        <li class="active"><a href="visu.html">Visualisations</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p><a href="#Viz1">Températures au cours d'une révolution</a></p>
+      </div>
+      <div class="well">
+        <p><a href="#Viz2">Comparaison</a></p>
+      </div>
+      <div class="well">
+        <p><a href="#Viz3">Représentation circulaire</a></p>
+      </div>
+      <div class="well">
+        <p><a href="#Viz4">Animation</a></p>
+      </div>
+
+    </div>
+    <div class="col-sm-8 text-justify">
+      <h1>DataViz Project : Mars climate <br>
+        <small>Visualisations</small>
+      </h1>
+      <br>
+      <!-- Visalisation 1 -->
+
+      <h2 id="Viz1">Températures au cours d'une révolution</h2>
+      <p>
+        Dans un premier temps nous avons représenté nos données sous forme de simples line charts. Nous utilisons les données de température globale sur Terre durant l'année 2015 et la température globale de Mars durant l'année 32. Ce sont deux année chevauchantes dans le temps.
+      </p>
+      <p><em>
+        Il existe plusieurs calendriers pour définir le temps sur Mars, on a utilisé un calendrier qui compte 12 mois de 55 jours. Cela nous a permis de faire facilement la comparaison entre les deux planètes.
+      </em></p>
+
+        <iframe src="./terre_2015.html"
+                width="50%"
+                height="400"
+                align="left">
+  			</iframe>
+
+        <iframe src="./mars_32-33_2015.html"
+                width="50%"
+                height="400"
+                align="right">
+  			</iframe>
+    <!-- Visalisation 2 -->
+    <p class="truc">text</p>
+
+    </br><hr></br>
+
+
+    <h2 id="Viz2">Comparaison des évolutions de températures sur une révolution</h2>
+    <p> Ce graphique permet de comparer directement les températures de Mars et de la Terre.
+    <p>
+
+    <iframe src="./courbeTerreMars.html"
+            width="100%"
+            height="600">
+    </iframe>
+
+    </br><hr>
+    <!-- Visalisation 3 -->
+
+    <h2 id="Viz3">Représentation circulaire</h2>
+    <p>
+      Cette visualisation représente la variation de température sur chaque planète au cours du temps, c'est-à-dire l'écart entre la température moyenne sur un mois et la température moyenne sur une année. La représentation circulaire rappelle les orbites des planètes et pourrait à terme permettre de rapprocher les variations de températures de la distance au soleil.
+
+      <em>Le point le plus en haut représente le premier mois.</em>
+
+    </br></br>
+      <em>Il a été un temps question de permettre au lecteur de changer l'année affichée, cependant les températures de Mars varient très peu au cours des années donc celà reviendrait à ne visualiser que les variations de températures sur Terre.</em>
+    </p>
+
+
+    <iframe src="./mars_earth-scale-radial.html"
+            width="100%"
+            height="650"
+            scrolling="no">
+    </iframe>
+
+    </br><hr>
+
+    <h2 id="Viz4">Représentation circulaire en mouvement</h2>
+    <p>
+      Cette représentation utilise les mêmes données que la précédente. Chaque anneau symbolise l'orbite de la planète et le mouvement perpétuel représente le temps qui passe, la position de la planète sur son orbite. <em>En réalité, les planètes ne sont pas synchronisées, la figure pourrait à terme prendre en compte cet aspect.</em><br>
+      <em>Le point le plus en haut représente le début du premier mois. Les irrégularités de la courbe apparaissent à chaque changement de mois car les données sont discrètes.</em>
+    </p>
+
+    <iframe src="./visuCircle.html"
+            width="100%"
+            height="650"
+            scrolling="no">
+    </iframe>
+
+    </div>
+
+    <!-- NAVBAR RIGHT -->
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>
+          <a href="https://github.com/MarsClimate/Projet.git" class="fa fa-github fa-3x"></a>
+        </p>
+      </div>
+      <div class="well">
+        <p>
+          <a href="https://lyondataviz.github.io/teaching/lyon1-m2/2018/">
+            <i class="fa fa-link fa-lg"></i> LyonDataViz
+          </a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Université Claude Bernard Lyon 1 - 2018/2019</p>
+</footer>
+
+</body>
+</html>
