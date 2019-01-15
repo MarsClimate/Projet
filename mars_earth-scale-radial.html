@@ -8,6 +8,13 @@
       font-size: 10px;
       font-family: monospace;
     }
+	
+	
+	.dot {
+    fill: #ffab00;
+    stroke: #fff;
+}
+	
   </style>
 </head>
 
@@ -28,7 +35,7 @@
     	.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     var innerRadius = 100,
-        outerRadius = Math.min(width, height) / 2 - 6;
+		outerRadius = Math.min(width, height) / 2 - 6;
 
     var parseTime = d3.timeParse("%d-%b-%y");
 
@@ -39,59 +46,86 @@
     var x = d3.scaleTime()
         .range([0, fullCircle]);
 
-    var y = d3.scaleRadial()
+    var y = d3.scaleLinear()
     		.range([innerRadius, outerRadius]);
 
-    var line = d3.lineRadial()
+    var line_mars = d3.lineRadial()
     		.angle(function(d) { return x(d.Date); })
-    		.radius(function(d) { return y(d.Close2); })
+    		.radius(function(d) { 			
+							return y(d.mars); })
 			.curve(d3.curveBasis);
+		
+	//var line_solar_wind = d3.lineRadial()
+	//	.angle(function(d) {return x(d.Date); })
+	//	.radius(function(d) { return y(d.solar_wind); })
+	//	.curve(d3.curveBasis);
 
-	var line2 = d3.lineRadial()
+
+	var solar_wind = g.append("image") 
+	    .attr('xlink:href', 'solar_wind.png')
+		.attr('width', 80)
+		.attr('height', 80)
+		.attr('x', x(width))
+		.attr('y', y(-1.5));
+		
+	var dust_storm = g.append("image") 
+	.attr('xlink:href', 'dust_storm.png')
+	.attr('width', 60)
+	.attr('height', 60)
+	.attr('x', x(width))
+	.attr('y', y(-1.2));
+
+	
+	solar_wind.transition()
+    .duration(6000)
+    .attr("x", -340);
+
+	dust_storm.transition()
+    .duration(6000)
+    .attr("x", 80);
+
+	var line_earth = d3.lineRadial()
 		.angle(function(d) { return x(d.Date); })
-		.radius(function(d) { return y(d.Close3); })
+		.radius(function(d) { return y(d.earth); })
 		.curve(d3.curveBasis);
-
-	var line3 = d3.lineRadial()
-		.angle(function(d) { return x(d.Date); })
-		.radius(function(d) { return y(d.Close4); })
-		.curve(d3.curveBasis);
-
+		
 	d3.csv("radial_data_earth_mars.csv" ,function(d) {
     //d3.csv("twtr.csv" ,function(d) {
+	 
       d.Date = parseTime(d.Date);
-      d.Close = +d.Close;
+      //d.Close = +d.Close;
       return d;
     }, function(error, data) {
       if (error) throw error;
 
       x.domain(d3.extent(data, function(d) { return d.Date; }));
-  		y.domain(d3.extent(data, function(d) { return d.Close; }));
+  		//y.domain(d3.extent(data, function(d) { return d.Close; }));
+		y.domain([-10,10]);
 
-
-      var linePlot = g.append("path")
+      var linePlot_mars = g.append("path")
       	.datum(data)
         .attr("fill", "none")
         .attr("stroke", "#ff7700")
 		.attr("stroke-width", 3)
 		.attr("opacity", 1)
-        .attr("d", line);
-
-	//var linePlot2 = g.append("path")
+        .attr("d", line_mars);
+		
+	   //var linePlot_solar_wind = g.append("path")
       	//.datum(data)
         //.attr("fill", "none")
-        //.attr("stroke", "black")
-		//.attr("stroke-width", 2)
-		//.attr("opacity", 1)
-        //.attr("d", line2);
-
-		var linePlot3 = g.append("path")
+        //.attr("stroke", "red")
+		//.attr("stroke-width", 10)
+		//.attr("opacity", 0.2)
+        //.attr("d", line_solar_wind);
+		
+		var linePlot_earth = g.append("path")
       	.datum(data)
         .attr("fill", "none")
         .attr("stroke", "#00d0ff")
+		//.attr("stroke", "grey")
 		.attr("stroke-width", 3)
 		.attr("opacity", 1)
-        .attr("d", line3);
+        .attr("d", line_earth);
 
       var yAxis = g.append("g")
           .attr("text-anchor", "middle");
@@ -101,30 +135,39 @@
         .data(y.ticks(8))
         .enter().append("g");
 
+
       yTick.append("circle")
           .attr("fill", "none")
           .attr("stroke", "black")
 		     .attr("stroke-width", 1)
       		.attr("opacity", 0.2)
           .attr("r", y);
-
+		  
       yAxis.append("circle")
       		.attr("fill", "none")
           .attr("stroke", "black")
 		  .attr("stroke-width", 1)
-      	  .attr("opacity", 0.2)
+      	  .attr("opacity", 0.8)
           .attr("r", function() { return y(y.domain()[0])});
+		  
+		  var tooltip = d3.select("body")
+    .append("div")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("background", "#000")
+    .text("a simple tooltip");
 
       var labels = yTick.append("text")
           .attr("y", function(d) { return -y(d); })
-          .attr("dy", "0.20em")
+          .attr("dy", "-0.4em") 
           .attr("fill", "none")
           .attr("stroke", "grey")
           .attr("stroke-width", "")
           .attr("stroke-linejoin", "round")
           .text(function(d) {
           			if (d === 0) {
-                  return "Moyenne annuelle";
+                  return "Moyenne annuelle (2015)";
                 } else {
                   return d + "°C";
                 }});
@@ -141,6 +184,19 @@
           .attr("transform", function(d) {
             return "rotate(" + ((x(d)) * 180 / Math.PI - 90) + ")translate(" + innerRadius + ",0)";
           });
+		  
+		  
+		//g.selectAll(".dot")
+    //.data(data)
+  //.enter().append("circle") // Uses the enter().append() method
+    //.attr("class", "dot") // Assign a class for styling
+    //.attr("cx", function(d) { return x(d.Date) ; })
+    //.attr("cy", function(d) {  return y(d.mars); })
+    //.attr("r", 5)
+	//.attr("transform", function(d) {
+    //        return "rotate(" + ((x(d.Date)) * 180 / Math.PI - 90) + ")translate(" + innerRadius + ",-18)";
+    //      })
+	//;
 
       xTick.append("line")
         .attr("x2", -8)
@@ -175,25 +231,35 @@
 		  .attr("stroke", "#00d0ff");
 
   // LINE CHART
-      var lineLength = linePlot.node().getTotalLength();
+      var lineLength = linePlot_mars.node().getTotalLength();
 
-      linePlot
+      linePlot_mars
         .attr("stroke-dasharray", lineLength + " " + lineLength)
         .attr("stroke-dashoffset", -lineLength)
         .transition()
           .duration(5000)
           .ease(d3.easeLinear)
           .attr("stroke-dashoffset", 0);
-
-		 linePlot3
+		  
+		  
+		linePlot_solar_wind
         .attr("stroke-dasharray", lineLength + " " + lineLength)
         .attr("stroke-dashoffset", -lineLength)
         .transition()
           .duration(5000)
+          .ease(d3.easeLinear)
+          .attr("stroke-dashoffset", 0);
+		  
+		 linePlot_earth
+        .attr("stroke-dasharray", lineLength + " " + lineLength)
+        .attr("stroke-dashoffset", -lineLength)
+        .transition()
+          .duration(0)
           .ease(d3.easeLinear)
           .attr("stroke-dashoffset", 0);
 
     });
+	
 
 
   </script>
