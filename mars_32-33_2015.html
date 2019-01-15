@@ -93,6 +93,9 @@
     .domain([-100, -80])
     .range([height, 0]);
 
+    //  Min Mars ------------------------------------------------------------------
+
+
    d3.json("marsC_dataset.json", function(error, data) {
 	  	if (error) throw error;
 
@@ -185,7 +188,7 @@
   .style("text-decoration", "underline")
   .text("Température sur une révolution de Mars");
 
-   //  Max Terre ------------------------------------------------------------------
+   //  Max Mars ------------------------------------------------------------------
 
 
        d3.json("marsC_dataset.json", function(error, data2) {
@@ -241,7 +244,7 @@
          });
 
 
-   //  Min Terre ------------------------------------------------------------------
+   // Mars ------------------------------------------------------------------
 
 
        d3.json("marsC_dataset.json", function(error, data2) {
