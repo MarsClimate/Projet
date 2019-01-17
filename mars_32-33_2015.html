@@ -12,6 +12,20 @@
     stroke-width: 3;
 }
 
+.line2{
+    fill: none;
+    stroke: #ff7700;
+    stroke-width: 2;
+  	stroke-dasharray: 3,3;
+}
+
+.line3{
+    fill: none;
+    stroke: #ff7700;
+    stroke-width: 2;
+  	stroke-dasharray: 3,3;
+}
+
 .overlay {
   fill: none;
   pointer-events: all;
@@ -21,6 +35,18 @@
 .dot {
     fill: #ff7700;
     stroke: #fff;
+}
+
+.dot2
+    {
+    fill: white;
+    stroke: #ff7700;
+}
+
+.dot3
+    {
+    fill: white;
+    stroke:#ff7700;
 }
 
   .focus circle {
@@ -67,18 +93,21 @@
     .domain([-100, -80])
     .range([height, 0]);
 
-   d3.json("mars_dataset.json", function(error, data) {
+    //  Min Mars ------------------------------------------------------------------
+
+
+   d3.json("marsC_dataset.json", function(error, data) {
 	  	if (error) throw error;
 
       // Pre-processing
       data.forEach(function(d) {
-				d.valueC = +d.valueC;
+				d.value = +d.min;
         d.id = +d.id;
       });
 
     var line = d3.line()
     .x(function(d, i) { return xScale(d.id); })
-    .y(function(d) { return yScale(d.valueC); })
+    .y(function(d) { return yScale(d.value - 273.15); })
     .curve(d3.curveMonotoneX)
 
     var svg = d3.select("body").append("svg")
@@ -114,16 +143,16 @@
 
     svg.append("path")
     .datum(data)
-    .attr("class", "line")
+    .attr("class", "line2")
     .attr("d", line);
 
-    svg.selectAll(".dot")
+    svg.selectAll(".dot2")
     .data(data)
     .enter().append("circle")
-    .attr("class", "dot")
+    .attr("class", "dot2")
     .attr("cx", function(d, i) { return xScale(d.id) })
-    .attr("cy", function(d) { return yScale(d.valueC) })
-    .attr("r", 6)
+    .attr("cy", function(d) { return yScale(d.value - 273.15) })
+    .attr("r", 4)
     .on("mouseover", function(d){
 
       var mouse = d3.mouse(svg.node()).map(function(d) {
@@ -131,7 +160,7 @@
           });
 
       		d3.select(this).transition().duration(200)
-            .attr("r", function() { return 10; });
+            .attr("r", function() { return 6; });
 
       		var g = svg.append("g")
 
@@ -139,12 +168,12 @@
                   .attr('style', 'left:' + (mouse[0] - 5) +
                         'px; top:' +
                         (mouse[1] - 5) + 'px')
-                  .html(d.valueC);
+                  .html(d.value - 273.15);
 
     })
     .on("mouseout", function(d){
       		d3.select(this).transition().duration(200)
-            .attr("r", function(d, i) { return 6; });
+            .attr("r", function(d, i) { return 4; });
 
       		 tooltip.classed('hidden', true);
     });
@@ -159,10 +188,118 @@
   .style("text-decoration", "underline")
   .text("Température sur une révolution de Mars");
 
+   //  Max Mars ------------------------------------------------------------------
+
+
+       d3.json("marsC_dataset.json", function(error, data2) {
+   	  	if (error) throw error;
+
+         // Pre-processing
+         data2.forEach(function(d) {
+   				d.value = +d.max;
+           d.id = +d.id;
+         });
+
+       var line = d3.line()
+       .x(function(d) { return xScale(d.id); })
+       .y(function(d) { return yScale(d.value - 273.15); })
+       .curve(d3.curveMonotoneX)
+
+       svg.append("path")
+       .datum(data2)
+       .attr("class", "line3")
+       .attr("d", line);
+
+       svg.selectAll(".dot3")
+       .data(data2)
+       .enter().append("circle")
+       .attr("class", "dot3")
+       .attr("cx", function(d) { return xScale(d.month) })
+       .attr("cy", function(d) { return yScale(d.value - 273.15) })
+       .attr("r", 4)
+       .on("mouseover", function(d){
+
+         var mouse = d3.mouse(svg.node()).map(function(d) {
+                 return parseInt(d);
+             });
+
+         		d3.select(this).transition().duration(200)
+               .attr("r", function() { return 6; });
+
+         		var g = svg.append("g")
+
+             tooltip.classed('hidden', false)
+                     .attr('style', 'left:' + (mouse[0] +15) +
+                           'px; top:' +
+                           (mouse[1] +15) + 'px')
+                     .html(d.value - 273.15);
+
+       })
+       .on("mouseout", function(d){
+         		d3.select(this).transition().duration(200)
+               .attr("r", function(d, i) { return 4; });
+
+         		 tooltip.classed('hidden', true);
+       });
+         });
+
+
+   // Mars ------------------------------------------------------------------
+
+
+       d3.json("marsC_dataset.json", function(error, data2) {
+   	  	if (error) throw error;
+
+         // Pre-processing
+         data2.forEach(function(d) {
+   				d.value = +d.value;
+           d.id = +d.id;
+         });
+
+       var line = d3.line()
+       .x(function(d) { return xScale(d.id); })
+       .y(function(d) { return yScale(d.value - 273.15); })
+       .curve(d3.curveMonotoneX)
+
+       svg.append("path")
+       .datum(data2)
+       .attr("class", "line")
+       .attr("d", line);
+
+       svg.selectAll(".dot")
+       .data(data2)
+       .enter().append("circle")
+       .attr("class", "dot")
+       .attr("cx", function(d) { return xScale(d.month) })
+       .attr("cy", function(d) { return yScale(d.value - 273.15) })
+       .attr("r", 6)
+       .on("mouseover", function(d){
+
+         var mouse = d3.mouse(svg.node()).map(function(d) {
+                 return parseInt(d);
+             });
+
+         		d3.select(this).transition().duration(200)
+               .attr("r", function() { return 10; });
+
+         		var g = svg.append("g")
+
+             tooltip.classed('hidden', false)
+                     .attr('style', 'left:' + (mouse[0] +15) +
+                           'px; top:' +
+                           (mouse[1] +15) + 'px')
+                     .html(d.value - 273.15);
+
+       })
+       .on("mouseout", function(d){
+         		d3.select(this).transition().duration(200)
+               .attr("r", function(d, i) { return 6; });
+
+         		 tooltip.classed('hidden', true);
+       });
+         });
+
    });
-
-
-
 
   </script>
 </body>
