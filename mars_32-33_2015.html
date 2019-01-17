@@ -168,7 +168,7 @@
                   .attr('style', 'left:' + (mouse[0] - 5) +
                         'px; top:' +
                         (mouse[1] - 5) + 'px')
-                  .html(d.value - 273.15);
+                  .html(d.value - 273.15 +'°C');
 
     })
     .on("mouseout", function(d){
@@ -232,7 +232,7 @@
                      .attr('style', 'left:' + (mouse[0] +15) +
                            'px; top:' +
                            (mouse[1] +15) + 'px')
-                     .html(d.value - 273.15);
+                     .html(d.value - 273.15+'°C');
 
        })
        .on("mouseout", function(d){
@@ -288,7 +288,7 @@
                      .attr('style', 'left:' + (mouse[0] +15) +
                            'px; top:' +
                            (mouse[1] +15) + 'px')
-                     .html(d.value - 273.15);
+                     .html(d.value - 273.15+'°C');
 
        })
        .on("mouseout", function(d){

@@ -179,7 +179,7 @@ div.tooltip {
               tooltip.classed('hidden', false)
                       .attr('style', 'left:' + (mouse[0]) +
                             'px; top:' + (mouse[1] +75) + 'px')
-                      .html(d.value);
+                      .html(d.value+'°C');
     })
     .on("mouseout", function(d){
       		d3.select(this).transition().duration(200)
@@ -233,7 +233,7 @@ div.tooltip {
                       .attr('style', 'left:' + (mouse[0] +15) +
                             'px; top:' +
                             (mouse[1] +15) + 'px')
-                      .html(d.value);
+                      .html(d.value+'°C');
 
         })
         .on("mouseout", function(d){
@@ -289,7 +289,7 @@ div.tooltip {
                       .attr('style', 'left:' + (mouse[0] +15) +
                             'px; top:' +
                             (mouse[1] +15) + 'px')
-                      .html(d.value);
+                      .html(d.value+'°C');
 
         })
         .on("mouseout", function(d){
@@ -348,7 +348,7 @@ svg.selectAll(".dot_minM")
               .attr('style', 'left:' + (mouse[0] - 5) +
                     'px; top:' +
                     (mouse[1] - 5) + 'px')
-              .html(d.value - 273.15);
+              .html(d.value - 273.15+'°C');
 
 })
 .on("mouseout", function(d){
@@ -402,7 +402,7 @@ svg.selectAll(".dot_minM")
                  .attr('style', 'left:' + (mouse[0] +15) +
                        'px; top:' +
                        (mouse[1] +15) + 'px')
-                 .html(d.value - 273.15);
+                 .html(d.value - 273.15+'°C');
 
    })
    .on("mouseout", function(d){
@@ -458,7 +458,7 @@ svg.selectAll(".dot_minM")
                  .attr('style', 'left:' + (mouse[0] +15) +
                        'px; top:' +
                        (mouse[1] +15) + 'px')
-                 .html(d.value - 273.15);
+                 .html(d.value - 273.15+'°C');
 
    })
    .on("mouseout", function(d){
