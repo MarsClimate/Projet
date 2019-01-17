@@ -48,7 +48,6 @@ var path = svg.append("g")
           .radius(function(a) {
             var t = d3.now() / 1000;
         		var ampl = Math.floor((a*6)/Math.PI)
-            console.log(ampl)
         return donnees.r + donnees.val[ampl]*10 * Math.pow((1 + Math.cos(a - t)) / 2, 50);
           });
     });
