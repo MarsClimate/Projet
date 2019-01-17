@@ -8,60 +8,48 @@ We aimed to give a representation of the variations of temperature of each plane
 
 These visualisations are intended for a wide audience, in a context of general education. They are supposed to help answer questions such as how different is the climate on Mars compared to Earth, what is the mean temperature or is there a seasonal cycle on Mars.
 
+### Sources
+* <a href="http://www-mars.lmd.jussieu.fr/mcd_python/">Data on Mars climate</a></li>
+* <a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data#GlobalTemperatures.csv">Data on Earth climate</a>
 
-Sources
-Climat de Mars
-Climat de la Terre
+#### Important work on the subject
 
+<a href="http://www-mars.lmd.jussieu.fr/mcd_python/">www-mars.lmd.jussieu.fr</a>: This website allows to visualize on maps all the data that has been collected by Mars probes. However, those are static maps that are quite difficult to read for non-scientists.
 
-<ul>
-  <li><a href="http://www-mars.lmd.jussieu.fr/mcd_python/" style="color: orange; font-weight:bold">Climat de Mars</a></li>
-  <li><a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data#GlobalTemperatures.csv" style="color: orange; font-weight:bold">Climat de la Terre</a></li>
-</ul>
-
-Travaux importants liés au projet
-www-mars.lmd.jussieu.fr: le site permet de visualiser sur des cartes les données récoltées par les différentes sondes sur Mars, par jour terrestre ou martien. Cependant les visualisations sont statiques qui représentent systématiquement les données dans l’espace, et pas dans le temps.
-
-nirgal.net : site apportant des connaisances sur la planète Mars notamment sur ses saisons et sa révolution.
-
-Inspirations
-Line charts
-Line chart circulaire
-Animation
+<a href="https://www.nirgal.net/saisons.html">nirgal.net</a> : This website provides knowledge about Mars, its revolution and seasonal cycles.
 
 
-<h3 id="P2">Sources</h3>
-<p>
+### Inspirations
+* <a href="https://blockbuilder.org/gordlea/27370d1eea8464b04538e6d8ced39e89">Line charts</a></li>
+* <a href="https://bl.ocks.org/tlfrd/fd6991b2d1947a3cb9e0bd20053899d6">Circular line chart</a>
+* <a href="https://blockbuilder.org/is64377/8301cb82bf1b95344b306cee6ff6e409">Animated chart</a></li>
 
-</p>
-<h4>Travaux importants liés au projet</h4>
-<p>
-  <a href="http://www-mars.lmd.jussieu.fr/mcd_python/" style="color: orange; font-weight:bold">www-mars.lmd.jussieu.fr</a>: le site permet de visualiser sur des cartes les données récoltées par les différentes sondes sur Mars, par jour terrestre ou martien. Cependant les visualisations sont statiques qui représentent systématiquement les données dans l’espace, et pas dans le temps.
-</p>
-<p>
-  <a href="https://www.nirgal.net/saisons.html" style="color: orange; font-weight:bold">nirgal.net</a> : site apportant des connaisances sur la planète Mars notamment sur ses saisons et sa révolution.
-</p>
+> University course website : <a href="https://lyondataviz.github.io/teaching/lyon1-m2/2018/"><i class="fa fa-link fa-lg"></i> LyonDataViz</a>
 
-<h3 id="P3">Inspirations</h3>
-<ul>
-  <li><a href="https://blockbuilder.org/gordlea/27370d1eea8464b04538e6d8ced39e89" style="color: orange; font-weight:bold">Line charts</a></li>
-  <li><a href="https://bl.ocks.org/tlfrd/fd6991b2d1947a3cb9e0bd20053899d6" style="color: orange; font-weight:bold">Line chart circulaire</a>
-  <li><a href="https://blockbuilder.org/is64377/8301cb82bf1b95344b306cee6ff6e409" style="color: orange; font-weight:bold">Animation</a></li>
-  </li>
-</ul>
-</div>
-<!-- NAVBAR RIGHT -->
-<div class="col-sm-2 sidenav">
-<div class="well">
-  <p>
-    <a href="https://github.com/MarsClimate/Projet.git" class="fa fa-github fa-3x"></a>
-  </p>
-</div>
-<div class="well">
-  <p>
-    <a href="https://lyondataviz.github.io/teaching/lyon1-m2/2018/">
-      <i class="fa fa-link fa-lg"></i> LyonDataViz
-    </a>
-  </p>
-</div>
-</div>
+---
+
+# Climat de Mars
+
+Dans ce travail, nous avons réalisé plusieurs vues permettant de comparer les climats de Mars et de la Terre. Nous avons également voulu représenter les variations de températures sur chaque planète en fonction des saisons, c'est à dire en fonction de la position de la planète par rapport au soleil.
+
+La question qu'on se pose c'est d'avoir une idée de l'impact des activités humaines sur les variations de températures de la Terre, par comparaison aveec une planète inhabitée. Mars est une planète proche de la Terre, très étudiée et de plus en plus intéressante pour les humains (projets de colonisation).
+
+Ces visualisations s'adressent à un grand public, dans un contexte de culture générale, pour répondre à des questions simples : en quoi le climat de Mars diffère-t-il de celui de la Terre ? Quelles sont les températures sur Mars ? Peut-on observer un cycle de saisons sur Mars ?
+
+### Sources
+* <a href="http://www-mars.lmd.jussieu.fr/mcd_python/">Climat de Mars</a></li>
+* <a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data#GlobalTemperatures.csv">Climat de la Terre</a>
+
+#### Travaux importants liés au projet
+
+<a href="http://www-mars.lmd.jussieu.fr/mcd_python/">www-mars.lmd.jussieu.fr</a>: le site permet de visualiser sur des cartes les données récoltées par les différentes sondes sur Mars, par jour terrestre ou martien. Cependant les visualisations sont statiques qui représentent systématiquement les données dans l’espace, et pas dans le temps.
+
+<a href="https://www.nirgal.net/saisons.html">nirgal.net</a> : site apportant des connaissances sur la planète Mars notamment sur ses saisons et sa révolution.
+
+
+### Inspirations
+* <a href="https://blockbuilder.org/gordlea/27370d1eea8464b04538e6d8ced39e89">Line charts</a></li>
+* <a href="https://bl.ocks.org/tlfrd/fd6991b2d1947a3cb9e0bd20053899d6">Line chart circulaire</a>
+* <a href="https://blockbuilder.org/is64377/8301cb82bf1b95344b306cee6ff6e409">Animation</a></li>
+
+> Site du cours : <a href="https://lyondataviz.github.io/teaching/lyon1-m2/2018/"><i class="fa fa-link fa-lg"></i> LyonDataViz</a>
