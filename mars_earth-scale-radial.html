@@ -218,17 +218,18 @@
       		.append("text")
       		.attr("dy", "-0.2em")
       		.attr("text-anchor", "middle")
-      		.text("MARS T° variation")
-          .style("font-size", "12px")
-		  .attr("stroke", "#ff7700");
+      		.text("solar months")
+                .style("font-size", "12px")
+            	.attr("stroke", "black");
+		//.attr("stroke", "#ff7700");
 
-      var subtitle = g.append("text")
-      		.attr("dy", "1em")
-          .attr("text-anchor", "middle")
-      		.attr("opacity", 1)
-      		.text("EARTH T° variation")
-          .style("font-size","12px")
-		  .attr("stroke", "#00d0ff");
+      //var subtitle = g.append("text")
+      //		.attr("dy", "1em")
+      //    .attr("text-anchor", "middle")
+      //		.attr("opacity", 1)
+      //		.text("EARTH T° variation")
+      //    .style("font-size","12px")
+     //		  .attr("stroke", "#00d0ff");
 
   // LINE CHART
       var lineLength = linePlot_mars.node().getTotalLength();
