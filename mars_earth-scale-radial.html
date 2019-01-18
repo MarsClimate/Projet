@@ -223,13 +223,15 @@
             	.attr("stroke", "grey");
 		//.attr("stroke", "#ff7700");
 
-      //var subtitle = g.append("text")
-      //		.attr("dy", "1em")
-      //    .attr("text-anchor", "middle")
-      //		.attr("opacity", 1)
-      //		.text("EARTH T° variation")
-      //    .style("font-size","12px")
-     //		  .attr("stroke", "#00d0ff");
+     var legend_earth = g.append("text")
+      		.attr("dy", "1em")
+          .attr("text-anchor", "middle")
+      		.attr("opacity", 1)
+      		.text("EARTH T° variation")
+          .style("font-size","12px")
+     		  .attr("stroke", "#00d0ff")
+     		.attr('x', -(x(width)+100))
+	.attr('y', y(-1.4));;
 
   // LINE CHART
       var lineLength = linePlot_mars.node().getTotalLength();
