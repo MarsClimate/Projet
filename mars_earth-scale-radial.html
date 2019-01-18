@@ -221,7 +221,6 @@
       		.text("solar months")
                 .style("font-size", "12px")
             	.attr("stroke", "grey");
-		//.attr("stroke", "#ff7700");
 
      var legend_earth = g.append("text")
       		.attr("dy", "1em")
@@ -231,7 +230,18 @@
           .style("font-size","12px")
      		  .attr("stroke", "#00d0ff")
      		.attr('x', -(x(width)+100))
-	.attr('y', y(-1.4));;
+	.attr('y', y(-1.4));
+	
+	
+     var legend_mars = g.append("text")
+      		.attr("dy", "1em")
+          .attr("text-anchor", "middle")
+      		.attr("opacity", 1)
+      		.text("MARS T° variation")
+          .style("font-size","12px")
+     		  .attr("stroke", "#ff7700")
+     		.attr('x', (x(width)))
+	.attr('y', y(-1.6));
 
   // LINE CHART
       var lineLength = linePlot_mars.node().getTotalLength();
