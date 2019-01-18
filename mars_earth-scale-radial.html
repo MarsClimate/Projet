@@ -62,16 +62,16 @@
 
 
 	var solar_wind = g.append("image") 
-	    .attr('xlink:href', 'solar_wind.png')
+	    .attr('xlink:href', 'solar_wind_test.png')
 		.attr('width', 100)
 		.attr('height', 100)
 		.attr('x', x(width))
 		.attr('y', y(-1.5));
 		
 	var dust_storm = g.append("image") 
-	.attr('xlink:href', 'dust_storm.png')
-	.attr('width', 60)
-	.attr('height', 60)
+	.attr('xlink:href', 'dust_storm_test.png')
+	.attr('width', 75)
+	.attr('height', 75)
 	.attr('x', x(width))
 	.attr('y', y(-1.4));
 
@@ -218,17 +218,30 @@
       		.append("text")
       		.attr("dy", "-0.2em")
       		.attr("text-anchor", "middle")
-      		.text("MARS T° variation")
-          .style("font-size", "12px")
-		  .attr("stroke", "#ff7700");
+      		.text("solar months")
+                .style("font-size", "12px")
+            	.attr("stroke", "grey");
 
-      var subtitle = g.append("text")
+     var legend_earth = g.append("text")
       		.attr("dy", "1em")
           .attr("text-anchor", "middle")
       		.attr("opacity", 1)
       		.text("EARTH T° variation")
           .style("font-size","12px")
-		  .attr("stroke", "#00d0ff");
+     		  .attr("stroke", "#00d0ff")
+     		.attr('x', -(x(width)+50))
+	.attr('y', 100);
+	
+	
+     var legend_mars = g.append("text")
+      		.attr("dy", "1em")
+          .attr("text-anchor", "middle")
+      		.attr("opacity", 1)
+      		.text("MARS T° variation")
+          .style("font-size","12px")
+     		  .attr("stroke", "#ff7700")
+     		.attr('x', -(x(width)+50))
+	.attr('y', 120);
 
   // LINE CHART
       var lineLength = linePlot_mars.node().getTotalLength();
